@@ -15,18 +15,24 @@ docker image, and original utility is
 
 ## Install
 
-- Set your git email by:
+- Set your git email:
   ```shell
   git config --global user.email 'USER@example.com'
   ```
 
-- Clone and move
+- Clone and move:
   ```shell
   git clone git@github.com:ceigh/git-hours-gnome.git && \
     mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
   ```
 
-- Enable it
+- Enable it:
   ```shell
   gnome-extensions enable git-hours@ceigh
   ```
+
+- Reload GNOME:
+
+  Press `Alt+F2`, type `r` and press `Enter`,
+
+  *(just relog to Wayland users).*
