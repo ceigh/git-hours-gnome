@@ -5,8 +5,8 @@
   "main": "extension.js",
   "repository": "git+https://github.com/ceigh/git-hours-gnome.git",
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
-    "build": "tsc"
+    "lint": "eslint --ext .ts .",
+    "build": "tsc && terser extension.js -o extension.js"
   },
   "keywords": [
     "git",
@@ -27,6 +27,8 @@
     "eslint": "^6.8.0",
     "eslint-config-airbnb-typescript": "^7.2.0",
     "eslint-plugin-import": "^2.20.1",
+    "husky": "^4.2.3",
+    "terser": "^4.6.7",
     "typescript": "^3.8.3"
   },
   "eslintConfig": {
@@ -35,6 +37,11 @@
     ],
     "parserOptions": {
       "project": "./tsconfig.json"
+    }
+  },
+  "husky": {
+   "hooks": {
+      "pre-commit": "yarn run lint && yarn run build"
     }
   }
 }
