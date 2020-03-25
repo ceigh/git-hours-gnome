@@ -12,10 +12,8 @@ docker image, and original utility is
 ## Install
 
 ```shell
-git clone git@github.com:ceigh/git-hours-gnome.git && cd git-hours-gnome
-yarn # or npm i
-yarn run build # or npm run build
-cd ..; mv git-hours ~/.local/share/gnome-shell/extensions/git-hours@ceigh
+git clone git@github.com:ceigh/git-hours-gnome.git && 
+  mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
 ```
 
 Now open gnome extensions and enable it.

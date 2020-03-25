@@ -1,12 +1,11 @@
 {
   "name": "git-hours-gnome",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Show work hours by git commits.",
-  "main": "extension.js",
   "repository": "git+https://github.com/ceigh/git-hours-gnome.git",
   "scripts": {
-    "lint": "eslint --ext .ts .",
-    "build": "tsc && terser extension.js -o extension.js"
+    "lint": "eslint --ext .js .",
+    "build": "terser extension.js -o extension.js"
   },
   "keywords": [
     "git",
@@ -22,25 +21,20 @@
   "homepage": "https://github.com/ceigh/git-hours-gnome#readme",
   "private": true,
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^2.25.0",
-    "@typescript-eslint/parser": "^2.25.0",
     "eslint": "^6.8.0",
-    "eslint-config-airbnb-typescript": "^7.2.0",
+    "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.3",
-    "terser": "^4.6.7",
-    "typescript": "^3.8.3"
+    "terser": "^4.6.7"
   },
   "eslintConfig": {
-    "extends": [
-      "airbnb-typescript/base"
-    ],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    }
+    "extends": "standard"
   },
   "husky": {
-   "hooks": {
+    "hooks": {
       "pre-commit": "yarn run lint && yarn run build"
     }
   }
