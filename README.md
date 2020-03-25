@@ -1,4 +1,4 @@
-# git-hours for GNOME
+# ⏲️ git-hours for GNOME
 
 > Simple GNOME extension, that help you 
 > track your activity, while working.
