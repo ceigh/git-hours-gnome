@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "description": "Show work hours by git commits.",
   "main": "extension.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ceigh/git-hours-gnome.git"
-  },
+  "repository": "git+https://github.com/ceigh/git-hours-gnome.git",
   "keywords": [
     "git",
     "hours",
@@ -18,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/ceigh/git-hours-gnome/issues"
   },
-  "homepage": "https://github.com/ceigh/git-hours-gnome#readme"
+  "homepage": "https://github.com/ceigh/git-hours-gnome#readme",
+  "private": true
 }
