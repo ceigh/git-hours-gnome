@@ -22,8 +22,7 @@ docker image, and original utility is
 
 - Clone and move:
   ```shell
-  git clone git@github.com:ceigh/git-hours-gnome.git && \
-    mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
+  git clone git@github.com:ceigh/git-hours-gnome.git -C ~/.local/share/gnome-shell/extensions/git-hours@ceigh
   ```
 
 - Enable it:
@@ -31,8 +30,7 @@ docker image, and original utility is
   gnome-extensions enable git-hours@ceigh
   ```
 
-- Reload GNOME:
+- Restart GNOME:
 
-  Press `Alt+F2`, type `r` and press `Enter`,
-
-  *(just relog to Wayland users).*
+  Press `Alt+F2`, type `r` and press `Enter`.
+  *(restart session required on Wayland).*
