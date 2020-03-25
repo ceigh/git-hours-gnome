@@ -1,0 +1,22 @@
+{
+  "name": "git-hours-gnome",
+  "version": "0.1.0",
+  "description": "Show work hours by git commits.",
+  "main": "extension.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ceigh/git-hours-gnome.git"
+  },
+  "keywords": [
+    "git",
+    "hours",
+    "gnome",
+    "extension"
+  ],
+  "author": "Artjom Löbsack",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ceigh/git-hours-gnome/issues"
+  },
+  "homepage": "https://github.com/ceigh/git-hours-gnome#readme"
+}
