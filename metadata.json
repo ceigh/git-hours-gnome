@@ -1,7 +1,7 @@
 {
   "name": "Git Hours",
   "description": "Show work hours by git commits.",
-  "url": "https://ceigh.github.io/git-hours-gnome",
+  "url": "https://github.com/ceigh/git-hours-gnome",
   "uuid": "git-hours@ceigh",
   "shell-version": [
     "3.36"
