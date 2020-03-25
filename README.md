@@ -20,10 +20,10 @@ docker image, and original utility is
   git config --global user.email 'USER@example.com'
   ```
 
-- Clone:
+- Clone and move:
   ```shell
-  git -C ~/.local/share/gnome-shell/extensions/git-hours@ceigh \
-    clone git@github.com:ceigh/git-hours-gnome.git
+  git clone git@github.com:ceigh/git-hours-gnome.git \
+    && mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
   ```
 
 - Enable it:
