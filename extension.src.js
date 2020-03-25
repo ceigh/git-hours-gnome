@@ -1,15 +1,12 @@
 /* global imports */
-
 const Main = imports.ui.main
-const { St } = imports.gi.St
-
+const St = imports.gi.St
 let label
 
 // eslint-disable-next-line no-unused-vars
 function init () {
   label = new St.Label({
-    style_class: 'label',
-    text: 'starting...'
+    text: 'loading...'
   })
 }
 
