@@ -11,7 +11,7 @@ const email = 'ceigh@pm.me'
 const mask = '%s' // with %s
 const interval = 5 // minutes
 
-function getHours () {
+async function getHours () {
   const command = `docker run --rm -v ${path}:/code zaherg/git-hours`
   const [, out] = GLib.spawn_command_line_sync(command)
   const { hours } = JSON.parse(out)[email]
