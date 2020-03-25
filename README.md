@@ -18,4 +18,3 @@ yarn run build # or npm run build
 cd ..; mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
 gnome-extensions enable git-hours@ceigh
 ```
-- Restart shell by `Alt+F2`, `r`, `Enter`.
