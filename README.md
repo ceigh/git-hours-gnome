@@ -16,6 +16,6 @@ git clone git@github.com:ceigh/git-hours-gnome.git && cd git-hours-gnome
 yarn # or npm i
 yarn run build # or npm run build
 cd ..; mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
+gnome-extensions enable git-hours@ceigh
 ```
-
-Now open gnome extensions and enable it.
+- Restart shell by `Alt+F2`, `r`, `Enter`.
