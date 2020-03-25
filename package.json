@@ -4,8 +4,8 @@
   "description": "Show work hours by git commits.",
   "repository": "git+https://github.com/ceigh/git-hours-gnome.git",
   "scripts": {
-    "lint": "eslint --ext .js .",
-    "build": "terser extension.js -o extension.js"
+    "lint": "eslint extension.src.js",
+    "build": "terser extension.src.js -o extension.js"
   },
   "keywords": [
     "git",
