@@ -9,6 +9,10 @@ docker image, and original utility is
 [here](https://github.com/kimmobrunfeldt/git-hours).
 
 
+## Dependencies
+You need to install [docker](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux).
+
+
 ## Install
 
 ```shell
