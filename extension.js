@@ -24,7 +24,6 @@ function getEnv () {
 }
 
 function getEmail () {
-  // eslint-disable-next-line no-useless-escape
   const cfg = call(`cat ${env.HOME}/.gitconfig`)
   return cfg.split('\n')[1].split(' ')[2]
 }
@@ -37,9 +36,7 @@ async function getHours () {
 
 // eslint-disable-next-line no-unused-vars
 function init () {
-  label = new St.Label({
-    text: ''
-  })
+  label = new St.Label({ text: '' })
   getHours()
 }
 
