@@ -4,6 +4,9 @@
   "description": "Show work hours by git commits.",
   "main": "extension.js",
   "repository": "git+https://github.com/ceigh/git-hours-gnome.git",
+  "scripts": {
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
+  },
   "keywords": [
     "git",
     "hours",
@@ -16,5 +19,21 @@
     "url": "https://github.com/ceigh/git-hours-gnome/issues"
   },
   "homepage": "https://github.com/ceigh/git-hours-gnome#readme",
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-typescript": "^7.2.0",
+    "eslint-plugin-import": "^2.20.1",
+    "typescript": "^3.8.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "airbnb-typescript/base"
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
+  }
 }
