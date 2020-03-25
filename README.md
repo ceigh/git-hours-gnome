@@ -10,15 +10,23 @@ docker image, and original utility is
 
 
 ## Dependencies
-You need to install [docker](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux).
+- You need to install [docker](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux).
 
 
 ## Install
 
-```shell
-git clone git@github.com:ceigh/git-hours-gnome.git && cd git-hours-gnome
-yarn # or npm i
-yarn run build # or npm run build
-cd ..; mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
-gnome-extensions enable git-hours@ceigh
-```
+- Set your git email by:
+  ```shell
+  git config --global user.email 'USER@example.com'
+  ```
+
+- Clone and move
+  ```shell
+  git clone git@github.com:ceigh/git-hours-gnome.git && \
+    mv git-hours-gnome ~/.local/share/gnome-shell/extensions/git-hours@ceigh
+  ```
+
+- Enable it
+  ```shell
+  gnome-extensions enable git-hours@ceigh
+  ```
