@@ -4,8 +4,7 @@
   "description": "Show work hours by git commits.",
   "repository": "git+https://github.com/ceigh/git-hours-gnome.git",
   "scripts": {
-    "lint": "eslint extension.src.js",
-    "build": "terser extension.src.js -o extension.js"
+    "lint": "eslint extension.js"
   },
   "keywords": [
     "git",
@@ -27,15 +26,14 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "husky": "^4.2.3",
-    "terser": "^4.6.7"
+    "husky": "^4.2.3"
   },
   "eslintConfig": {
     "extends": "standard"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn run lint && yarn run build"
+      "pre-commit": "yarn run lint"
     }
   }
 }
