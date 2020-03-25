@@ -5,7 +5,8 @@
   "main": "extension.js",
   "repository": "git+https://github.com/ceigh/git-hours-gnome.git",
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./"
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx ./",
+    "build": "tsc"
   },
   "keywords": [
     "git",
