@@ -23,7 +23,7 @@ function toString(byteArray) {
 
 function getInterval() {
   // temporary
-  return 25 // minutes
+  return 25 * 60.0
 }
 
 function getPath() {
@@ -59,14 +59,14 @@ function getHours() {
 // Core
 /* eslint-disable-next-line no-unused-vars */
 function init() {
-  label = new St.Label({ text: '...' })
-  getHours()
+  label = new St.Label()
 }
 
 /* eslint-disable-next-line no-unused-vars */
 function enable() {
-  Main.panel._rightBox.insert_child_at_index(label, 1)
-  timer = MainLoop.timeout_add_seconds(60.0 * interval, getHours)
+  Main.panel._rightBox.insert_child_at_index(label, 0)
+  getHours()
+  timer = MainLoop.timeout_add_seconds(interval, getHours)
 }
 
 /* eslint-disable-next-line no-unused-vars */
