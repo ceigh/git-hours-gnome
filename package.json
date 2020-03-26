@@ -29,7 +29,21 @@
     "husky": "^4.2.3"
   },
   "eslintConfig": {
-    "extends": "standard"
+    "extends": "standard",
+    "globals": {
+      "imports": true
+    },
+    "rules": {
+      "no-multiple-empty-lines": [
+        "error",
+        {
+          "max": 2,
+          "maxEOF": 0,
+          "maxBOF": 0
+        }
+      ],
+      "space-before-function-paren": ["error", "never"]
+    }
   },
   "husky": {
     "hooks": {
