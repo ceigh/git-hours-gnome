@@ -14,13 +14,11 @@ docker image, and original utility is
 [docker](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux).
 
 
-## Setup
-Open extension preferences and just set path, interval and email.
-
-Also you can put email field empty if you are using git config:
-```shell
-git config --global user.email 'example@example.com'
-```
+## TODO
+- [x] Configurable settings
+- [ ] Add salary per hour parameter
+- [ ] Move to native JS from docker
+- [ ] Add time intervals by date
 
 
 ## Install
@@ -39,6 +37,15 @@ git config --global user.email 'example@example.com'
 
   Press `Alt+F2`, type `r` and press `Enter`.
   *(restart session required on Wayland).*
+
+
+## Setup
+Open extension preferences and just set path, interval and email.
+
+Also you can put email field empty if you are using git config:
+```shell
+git config --global user.email 'example@example.com'
+```
 
 
 ## Debug
