@@ -4,25 +4,16 @@ const Gio = imports.gi.Gio
 const GLib = imports.gi.GLib
 const Main = imports.ui.main
 const MainLoop = imports.mainloop
+
 const Me = imports.misc.extensionUtils.getCurrentExtension()
 
-let label, timer, settings
 
-
-// Defaults
-const home = GLib.getenv('HOME')
-const interval = getInterval()
-const path = getPath()
-const email = getEmail()
+// Vars
+let settings, label, timer, home
+let path, email, interval
 
 
 // Helpers
-// since runtime didnt convert `out` to string
-function toString(byteArray) {
-  return String.fromCharCode
-    .apply(null, byteArray).replace('\n', '')
-}
-
 function getSettings() {
   const GioSSS = Gio.SettingsSchemaSource
   const schemaSource = GioSSS.new_from_directory(
@@ -36,9 +27,10 @@ function getSettings() {
   return new Gio.Settings({ settings_schema: schemaObj })
 }
 
-function getInterval() {
-  // temporary
-  return 25 * 60.0
+// since runtime didnt convert `out` to string
+function toString(byteArray) {
+  return String.fromCharCode
+    .apply(null, byteArray).replace('\n', '')
 }
 
 function getPath() {
@@ -55,7 +47,12 @@ function getEmail() {
   return email
 }
 
-function getHours() {
+function getInterval() {
+  // temporary
+  return 25 * 60.0
+}
+
+function update() {
   const command = `docker run --rm -v ${path}:/code zaherg/git-hours`
   const [res, out] = GLib.spawn_command_line_sync(command)
   if (!res) return
@@ -71,18 +68,23 @@ function getHours() {
 }
 
 
-// Core
+// Exports
 /* eslint-disable-next-line no-unused-vars */
 function init() {
-  label = new St.Label()
+  settings = getSettings()
+  label = new St.Label({ text: '0' })
+  home = GLib.getenv('HOME')
+
+  path = getPath()
+  email = getEmail()
+  interval = getInterval()
 }
 
 /* eslint-disable-next-line no-unused-vars */
 function enable() {
-  settings = getSettings()
-  getHours()
+  update()
   Main.panel._rightBox.insert_child_at_index(label, 0)
-  timer = MainLoop.timeout_add_seconds(interval, getHours)
+  timer = MainLoop.timeout_add_seconds(interval, update)
 }
 
 /* eslint-disable-next-line no-unused-vars */
