@@ -10,16 +10,20 @@ docker image, and original utility is
 
 
 ## Dependencies
-- You need to install [docker](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux).
+- You need to install
+[docker](https://hub.docker.com/search?q=&type=edition&offering=community&operating_system=linux).
+
+
+## Setup
+Open extension preferences and just set path, interval and email.
+
+Also you can put email field empty if you are using git config:
+```shell
+git config --global user.email 'example@example.com'
+```
 
 
 ## Install
-
-- Set your git email:
-  ```shell
-  git config --global user.email 'USER@example.com'
-  ```
-
 - Clone and move:
   ```shell
   git clone git@github.com:ceigh/git-hours-gnome.git \
@@ -35,3 +39,18 @@ docker image, and original utility is
 
   Press `Alt+F2`, type `r` and press `Enter`.
   *(restart session required on Wayland).*
+
+
+## Debug
+If something went wrong, or just didn't work, please see output of shell:
+```shell
+journalctl -f /usr/bin/gnome-shell | grep -E --color=always 'git-hours@ceigh'
+```
+
+
+## Development
+If you want to help me in development, you can simply clone this repo like on install,
+
+run `yarn # or npm i` and start.
+
+Also you can simply open issues if you have found a *bug* 🐛️.
