@@ -1,10 +1,12 @@
 // Imports
 const St = imports.gi.St
+const Gio = imports.gi.Gio
 const GLib = imports.gi.GLib
 const Main = imports.ui.main
 const MainLoop = imports.mainloop
+const Me = imports.misc.extensionUtils.getCurrentExtension()
 
-let label, timer
+let label, timer, settings
 
 
 // Defaults
@@ -19,6 +21,19 @@ const email = getEmail()
 function toString(byteArray) {
   return String.fromCharCode
     .apply(null, byteArray).replace('\n', '')
+}
+
+function getSettings() {
+  const GioSSS = Gio.SettingsSchemaSource
+  const schemaSource = GioSSS.new_from_directory(
+    Me.dir.get_child('schemas').get_path(),
+    GioSSS.get_default(),
+    false
+  )
+  const id = 'org.gnome.shell.extensions.git-hours@ceigh'
+  const schemaObj = schemaSource.lookup(id, true)
+  if (!schemaObj) throw new Error(`Cannot find ${id} schema!`)
+  return new Gio.Settings({ settings_schema: schemaObj })
 }
 
 function getInterval() {
@@ -64,8 +79,9 @@ function init() {
 
 /* eslint-disable-next-line no-unused-vars */
 function enable() {
-  Main.panel._rightBox.insert_child_at_index(label, 0)
+  settings = getSettings()
   getHours()
+  Main.panel._rightBox.insert_child_at_index(label, 0)
   timer = MainLoop.timeout_add_seconds(interval, getHours)
 }
 
