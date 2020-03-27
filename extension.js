@@ -9,7 +9,7 @@ const Me = imports.misc.extensionUtils.getCurrentExtension()
 
 
 // Vars
-let settings, label, timer, home
+let settings, label, timer
 let path, email, interval
 
 
@@ -34,32 +34,50 @@ function toString(byteArray) {
 }
 
 function getPath() {
-  // temporary
-  return `${home}/.local/share/gnome-shell/extensions/git-hours@ceigh`
+  const path = settings.get_string('path')
+  if (!path) {
+    throw new Error('Set path to repository in preferences!')
+  }
+  // log(`Repository directory: ${path}.`)
+  return path
 }
 
 function getEmail() {
-  const [res, out] = GLib.spawn_command_line_sync('git config user.email')
-  if (!res) return
+  let email = settings.get_string('email')
+  // log(`User email: ${email}.`)
+  if (email) return email
 
-  const email = toString(out)
+  const [res, out, err, code] = GLib
+    .spawn_command_line_sync('git config user.email')
+  if (!res || code) {
+    throw new Error(`Getting email: msg - "${err}", code - ${code}!`)
+  }
+
+  email = toString(out)
   // log(`User email: ${email}.`)
   return email
 }
 
 function getInterval() {
-  // temporary
-  return 25 * 60.0
+  const interval = 60.0 * (settings.get_int('interval') || 30)
+  // log(`Interval: ${interval}.`)
+  return interval
 }
 
 function update() {
   const command = `docker run --rm -v ${path}:/code zaherg/git-hours`
-  const [res, out] = GLib.spawn_command_line_sync(command)
-  if (!res) return
+  const [res, out, err, code] = GLib.spawn_command_line_sync(command)
+  if (!res || code) {
+    throw new Error(`Update hours: msg - "${err}", code - ${code}!`)
+  }
 
   const total = toString(out)
   // log(`Total: ${total}.`)
   const totalObj = JSON.parse(total)
+
+  if (!Object.prototype.hasOwnProperty.call(totalObj, email)) {
+    throw new Error(`User ${email} didn't commit to the repository!`)
+  }
 
   const user = totalObj[email]
   label.set_text(user.hours.toString())
@@ -73,7 +91,6 @@ function update() {
 function init() {
   settings = getSettings()
   label = new St.Label({ text: '0' })
-  home = GLib.getenv('HOME')
 
   path = getPath()
   email = getEmail()

@@ -3,7 +3,7 @@
   <schema id='org.gnome.shell.extensions.git-hours@ceigh'
           path='/org/gnome/shell/extensions/git-hours@ceigh/'>
     <key type='s' name='path'>
-      <default>'~/.local/share/gnome-shell/extensions/git-hours@ceigh'</default>
+      <default>''</default>
       <summary>Local path to the repository where we will count the hours</summary>
     </key>
 
@@ -13,7 +13,7 @@
     </key>
 
     <key type='i' name='interval'>
-      <default>25</default>
+      <default>30</default>
       <summary>Interval in the calculation (in minutes)</summary>
     </key>
   </schema>
