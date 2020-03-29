@@ -17,6 +17,7 @@ docker image, and original utility is
 ## TODO
 - [x] Configurable settings
 - [ ] Add salary per hour parameter
+- [ ] Publish to [extensions.gnome.org](https://extensions.gnome.org)
 - [ ] Move to native JS from docker
 - [ ] Add time intervals by date
 
