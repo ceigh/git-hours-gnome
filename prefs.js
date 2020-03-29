@@ -1,44 +1,52 @@
+// Imports
 const Gtk = imports.gi.Gtk
 
 
+// Vars
+let settingsBox
+
+
+// Helpers
+function addEntry({ placeholder, label, text = '' }) {
+  const entryBox = new Gtk.VBox({ border_width: 10 })
+  const entryLabel = new Gtk.Label({
+    label: `<b>${label}</b>`,
+    use_markup: true,
+    xalign: 0
+  })
+  const entry = new Gtk.Entry({
+    placeholder_text: placeholder,
+    text
+  })
+
+  entryBox.pack_start(entryLabel, false, false, 10)
+  entryBox.pack_end(entry, false, false, 0)
+  settingsBox.pack_start(entryBox, true, false, 0)
+}
+
+
+// Exports
 /* eslint-disable-next-line no-unused-vars */
-function init() {}
+function init() {
+  settingsBox = new Gtk.VBox({ border_width: 10 })
+}
 
 /* eslint-disable-next-line no-unused-vars */
 function buildPrefsWidget() {
-  const notebook = new Gtk.Notebook()
+  addEntry({
+    placeholder: '/home/user/work/repository',
+    label: 'Absolute path to local git repository'
+  })
+  addEntry({
+    placeholder: 'example@example.com',
+    label: 'Your git email, leave blank if you are using git config'
+  })
+  addEntry({
+    placeholder: '30',
+    label: 'Interval between checks (in minutes)',
+    text: '30'
+  })
 
-  const settingsBox = new Gtk.VBox({ border_width: 10 })
-  const aboutBox = new Gtk.VBox({ border_width: 10 })
-
-  settingsBox.pack_start(
-    new Gtk.Label({
-      label: '<b>Settings</b>',
-      use_markup: true
-    }),
-    true, // expand
-    true, // fill
-    0
-  )
-  aboutBox.pack_start(
-    new Gtk.Label({
-      label: '<b>Git Hours</b>',
-      use_markup: true
-    }),
-    true, // expand
-    true, // fill
-    0
-  )
-
-  notebook.append_page(
-    settingsBox,
-    new Gtk.Label({ label: 'Settings' })
-  )
-  notebook.append_page(
-    aboutBox,
-    new Gtk.Label({ label: 'About' })
-  )
-
-  notebook.show_all()
-  return notebook
+  settingsBox.show_all()
+  return settingsBox
 }
