@@ -8,7 +8,7 @@ const _ = imports.helpers
 
 // Vars
 let settings
-let settingsBox, fileChooser, entry, scale
+let settingsBox, info, fileChooser, entry, scale
 
 
 // Helpers
@@ -65,6 +65,21 @@ function generateScale() {
   return scale
 }
 
+function generateInfo() {
+  const infoLabel = _.generateLabel('Saved!')
+  const info = new Gtk.InfoBar({
+    revealed: false,
+    show_close_button: true
+  })
+  const infoArea = info.get_content_area()
+
+  info.connect('response', () => info.set_revealed(false))
+
+  infoArea.pack_start(infoLabel, false, false, 10)
+  settingsBox.pack_start(info, true, false, 0)
+  return info
+}
+
 function addBtn() {
   const btnBox = new Gtk.VBox({ border_width: 10 })
   const btn = Gtk.Button.new_with_label('Save')
@@ -79,23 +94,26 @@ function save() {
   settings.set_string('path', fileChooser.get_filename())
   settings.set_string('email', entry.get_text())
   settings.set_int('interval', scale.get_value())
+  info.set_revealed(true)
 }
 
 // Exports
 /* eslint-disable-next-line no-unused-vars */
 function init() {
   settings = _.getSettings()
+}
+
+/* eslint-disable-next-line no-unused-vars */
+function buildPrefsWidget() {
   settingsBox = new Gtk.VBox({ border_width: 10 })
+  info = generateInfo()
 
   fileChooser = generateFileChooser()
   entry = generateEntry()
   scale = generateScale()
 
   addBtn()
-}
 
-/* eslint-disable-next-line no-unused-vars */
-function buildPrefsWidget() {
   settingsBox.show_all()
   return settingsBox
 }
