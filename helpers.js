@@ -1,5 +1,6 @@
 // Imports
 const Gio = imports.gi.Gio
+const Gtk = imports.gi.Gtk
 const GLib = imports.gi.GLib
 const Me = imports.misc.extensionUtils.getCurrentExtension()
 
@@ -38,6 +39,15 @@ function getPath() {
   }
   // log(`Repository directory: ${path}.`)
   return path
+}
+
+/* eslint-disable-next-line no-unused-vars */
+function generateLabel(text) {
+  return new Gtk.Label({
+    label: `<b>${text}</b>`,
+    use_markup: true,
+    xalign: 0
+  })
 }
 
 /* eslint-disable-next-line no-unused-vars */
